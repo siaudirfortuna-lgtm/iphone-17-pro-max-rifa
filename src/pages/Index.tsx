@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Gift, ChevronRight, Shield, Clock, Smartphone, MapPin, Users, Timer, Volume2, VolumeX, CheckCircle2, CreditCard } from "lucide-react";
+import { Gift, ChevronRight, Shield, Clock, Smartphone, MapPin, Users, Timer, Volume2, VolumeX, CreditCard } from "lucide-react";
 import { useEffect, useState, useRef, useCallback } from "react";
 
 const RAFFLE_URL = "https://123rifas.com/acao/iphone-17-pro-max-23";
