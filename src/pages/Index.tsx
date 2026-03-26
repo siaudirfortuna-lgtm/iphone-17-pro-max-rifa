@@ -143,6 +143,23 @@ const Index = () => {
 
       {/* ═══ MAIN CONTENT ═══ */}
       <section className="relative z-10 flex flex-col items-center px-4 -mt-28 sm:-mt-36">
+        {/* Top Saiba Mais CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="w-full max-w-sm mb-5 px-2 z-30"
+        >
+          <a href={RAFFLE_URL} target="_blank" rel="noopener noreferrer" className="w-full block">
+            <Button size="lg" className="w-full text-base py-6 rounded-xl shadow-[0_4px_20px_rgba(34,197,94,0.4)] border border-green-400/50 bg-green-600 hover:bg-green-500 text-white font-bold transition-all">
+              <span className="relative z-10 flex items-center justify-center">
+                Clique para Saber Mais
+                <ChevronRight className="w-5 h-5 ml-1" />
+              </span>
+            </Button>
+          </a>
+        </motion.div>
+
         {/* Creative video */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
