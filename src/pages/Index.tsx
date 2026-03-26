@@ -35,7 +35,6 @@ function getTimeLeft(target: Date) {
 const Index = () => {
   const [notification, setNotification] = useState<string | null>(null);
   const [showNotif, setShowNotif] = useState(false);
-  const [viewerCount] = useState(() => Math.floor(Math.random() * 30) + 45);
   const [isMuted, setIsMuted] = useState(false);
   const creativeRef = useRef<HTMLVideoElement>(null);
 
@@ -170,25 +169,20 @@ const Index = () => {
           </button>
         </motion.div>
 
-        {/* Dual CTAs for Mobile Strategy */}
+        {/* Mobile CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.6 }}
-          className="flex flex-col w-full max-w-sm gap-3 mb-10 px-2"
+          className="w-full max-w-sm mb-10 px-2"
         >
-          <a href={RAFFLE_URL} target="_blank" rel="noopener noreferrer" className="w-full">
-            <Button variant="hero" size="lg" className="w-full text-lg py-7 rounded-xl shadow-[0_0_20px_hsl(var(--primary)/0.3)] border border-primary/50 relative overflow-hidden group">
-              <span className="relative z-10 flex items-center">
+          <a href={RAFFLE_URL} target="_blank" rel="noopener noreferrer" className="w-full block">
+            <Button variant="hero" size="lg" className="w-full text-lg py-8 rounded-2xl shadow-[0_0_20px_hsl(var(--primary)/0.3)] border border-primary/50 relative overflow-hidden group">
+              <span className="relative z-10 flex items-center font-bold">
                 Participar Agora
                 <ChevronRight className="w-5 h-5 ml-1" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </Button>
-          </a>
-          <a href={RAFFLE_URL} target="_blank" rel="noopener noreferrer" className="w-full">
-            <Button variant="outline" size="lg" className="w-full text-sm py-6 rounded-xl border-primary/30 text-foreground bg-card/40 backdrop-blur-sm hover:bg-primary/10 transition-colors shadow-sm">
-              Saiba Mais Sobre a Rifa
             </Button>
           </a>
         </motion.div>
@@ -229,12 +223,7 @@ const Index = () => {
       </section>
 
       {/* ═══ FLOATING UI ═══ */}
-      {/* Live viewer count */}
-      <div className="fixed top-4 right-4 z-50 flex items-center gap-2 bg-card/90 border border-border backdrop-blur-md rounded-full px-3 py-1.5">
-        <span className="w-2 h-2 rounded-full bg-destructive animate-pulse" />
-        <Users className="w-3.5 h-3.5 text-primary" />
-        <span className="text-xs text-foreground font-medium">{viewerCount} online</span>
-      </div>
+
 
       {/* Purchase notification */}
       <AnimatePresence>
