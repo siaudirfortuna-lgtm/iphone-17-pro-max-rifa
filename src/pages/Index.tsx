@@ -134,22 +134,18 @@ const Index = () => {
             Garanta já o seu número da sorte e concorra ao smartphone mais desejado do mundo!
           </motion.p>
 
-          {/* Countdown */}
+          {/* Saiba Mais */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="flex items-center gap-2"
           >
-            <div className="flex items-center gap-1 text-primary mr-1">
-              <Timer className="w-4 h-4" />
-              <span className="text-xs font-semibold uppercase tracking-wider">Sorteio em</span>
-            </div>
-            <CountdownUnit value={countdown.hours} label="hrs" />
-            <span className="text-primary font-bold text-lg">:</span>
-            <CountdownUnit value={countdown.minutes} label="min" />
-            <span className="text-primary font-bold text-lg">:</span>
-            <CountdownUnit value={countdown.seconds} label="seg" />
+            <a href={RAFFLE_URL} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="bg-background/40 backdrop-blur-md border-primary/50 text-white hover:bg-primary/20 rounded-full px-8 py-3 h-auto text-sm font-semibold shadow-lg">
+                Clique para Saber Mais
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </a>
           </motion.div>
         </div>
       </section>
