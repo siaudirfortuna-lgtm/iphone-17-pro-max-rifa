@@ -89,7 +89,7 @@ const Index = () => {
         </video>
 
         {/* Gradient fade to black at the bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-background" />
 
         {/* Hero content over banner */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
@@ -145,8 +145,6 @@ const Index = () => {
               <Timer className="w-4 h-4" />
               <span className="text-xs font-semibold uppercase tracking-wider">Sorteio em</span>
             </div>
-            <CountdownUnit value={countdown.days} label="dias" />
-            <span className="text-primary font-bold text-lg">:</span>
             <CountdownUnit value={countdown.hours} label="hrs" />
             <span className="text-primary font-bold text-lg">:</span>
             <CountdownUnit value={countdown.minutes} label="min" />
@@ -157,7 +155,7 @@ const Index = () => {
       </section>
 
       {/* ═══ MAIN CONTENT ═══ */}
-      <section className="relative z-10 flex flex-col items-center px-4 -mt-16 sm:-mt-24">
+      <section className="relative z-10 flex flex-col items-center px-4 -mt-28 sm:-mt-36">
         {/* Creative video */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
