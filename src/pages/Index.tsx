@@ -37,7 +37,6 @@ const Index = () => {
   const [showNotif, setShowNotif] = useState(false);
   const [viewerCount] = useState(() => Math.floor(Math.random() * 30) + 45);
   const [isMuted, setIsMuted] = useState(false);
-  const countdown = useCountdown(DRAW_DATE);
   const creativeRef = useRef<HTMLVideoElement>(null);
 
   const toggleMute = useCallback(() => {
@@ -134,19 +133,12 @@ const Index = () => {
             Garanta já o seu número da sorte e concorra ao smartphone mais desejado do mundo!
           </motion.p>
 
-          {/* Saiba Mais */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-          >
-            <a href={RAFFLE_URL} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="bg-background/40 backdrop-blur-md border-primary/50 text-white hover:bg-primary/20 rounded-full px-8 py-3 h-auto text-sm font-semibold shadow-lg">
-                Clique para Saber Mais
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Button>
-            </a>
-          </motion.div>
+            className="h-12"
+          />
         </div>
       </section>
 
@@ -178,17 +170,25 @@ const Index = () => {
           </button>
         </motion.div>
 
-        {/* CTA */}
+        {/* Dual CTAs for Mobile Strategy */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.6 }}
-          className="mb-8"
+          className="flex flex-col w-full max-w-sm gap-3 mb-10 px-2"
         >
-          <a href={RAFFLE_URL} target="_blank" rel="noopener noreferrer">
-            <Button variant="hero" size="lg" className="text-base md:text-lg px-10 py-7 rounded-xl shadow-lg">
-              Participar Agora
-              <ChevronRight className="w-5 h-5 ml-1" />
+          <a href={RAFFLE_URL} target="_blank" rel="noopener noreferrer" className="w-full">
+            <Button variant="hero" size="lg" className="w-full text-lg py-7 rounded-xl shadow-[0_0_20px_hsl(var(--primary)/0.3)] border border-primary/50 relative overflow-hidden group">
+              <span className="relative z-10 flex items-center">
+                Participar Agora
+                <ChevronRight className="w-5 h-5 ml-1" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </Button>
+          </a>
+          <a href={RAFFLE_URL} target="_blank" rel="noopener noreferrer" className="w-full">
+            <Button variant="outline" size="lg" className="w-full text-sm py-6 rounded-xl border-primary/30 text-foreground bg-card/40 backdrop-blur-sm hover:bg-primary/10 transition-colors shadow-sm">
+              Saiba Mais Sobre a Rifa
             </Button>
           </a>
         </motion.div>
@@ -257,14 +257,7 @@ const Index = () => {
   );
 };
 
-const CountdownUnit = ({ value, label }: { value: number; label: string }) => (
-  <div className="flex flex-col items-center bg-card/80 border border-primary/20 backdrop-blur-sm rounded-lg px-3 py-2 min-w-[48px]">
-    <span className="text-lg font-black text-foreground tabular-nums">
-      {String(value).padStart(2, "0")}
-    </span>
-    <span className="text-[10px] text-muted-foreground uppercase tracking-wider">{label}</span>
-  </div>
-);
+
 
 const TrustItem = ({ icon, label }: { icon: React.ReactNode; label: string }) => (
   <div className="flex items-center gap-2 text-muted-foreground">
