@@ -36,12 +36,14 @@ const Index = () => {
   const [notification, setNotification] = useState<string | null>(null);
   const [showNotif, setShowNotif] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [showUnmuteOverlay, setShowUnmuteOverlay] = useState(false);
   const creativeRef = useRef<HTMLVideoElement>(null);
 
   const toggleMute = useCallback(() => {
     if (creativeRef.current) {
       creativeRef.current.muted = !creativeRef.current.muted;
       setIsMuted(creativeRef.current.muted);
+      setShowUnmuteOverlay(false);
     }
   }, []);
 
@@ -53,6 +55,7 @@ const Index = () => {
         if (creativeRef.current) {
           creativeRef.current.muted = true;
           setIsMuted(true);
+          setShowUnmuteOverlay(true);
           creativeRef.current.play().catch(() => {});
         }
       });
@@ -177,10 +180,31 @@ const Index = () => {
             <source src={`${import.meta.env.BASE_URL}video/criativo.mp4`} type="video/mp4" />
           </video>
 
-          {/* Mute/unmute toggle */}
+          {/* Full overlay when muted by browser policy */}
+          <AnimatePresence>
+            {showUnmuteOverlay && (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => {
+                  toggleMute();
+                  if (creativeRef.current) creativeRef.current.currentTime = 0; // Restart video so they hear everything
+                }}
+                className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center cursor-pointer z-20"
+              >
+                <div className="bg-primary/90 border-2 border-primary-foreground/20 text-primary-foreground rounded-full px-6 py-3 flex items-center gap-2 animate-bounce shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                  <Volume2 className="w-6 h-6" />
+                  <span className="font-bold text-sm tracking-wide">Toque para Ativar o Áudio</span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Mute/unmute toggle top right */}
           <button
             onClick={toggleMute}
-            className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-background/60 backdrop-blur-sm border border-border/50 text-foreground hover:bg-background/80 transition-colors"
+            className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-background/60 backdrop-blur-sm border border-border/50 text-foreground hover:bg-background/80 transition-colors z-30"
           >
             {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
           </button>
