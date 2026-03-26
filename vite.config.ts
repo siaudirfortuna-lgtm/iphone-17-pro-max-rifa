@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/Rifei-iphone-17-2025/",
+  base: "/iphone-17-pro-max-rifa/",
   server: {
     host: "::",
     port: 8080,
