@@ -85,7 +85,7 @@ const Index = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/video/bg.mp4" type="video/mp4" />
+          <source src={`${import.meta.env.BASE_URL}video/bg.mp4`} type="video/mp4" />
         </video>
 
         {/* Gradient fade to black at the bottom */}
@@ -172,7 +172,7 @@ const Index = () => {
             preload="auto"
             className="w-full aspect-[9/16] object-cover"
           >
-            <source src="/video/criativo.mp4" type="video/mp4" />
+            <source src={`${import.meta.env.BASE_URL}video/criativo.mp4`} type="video/mp4" />
           </video>
 
           {/* Mute/unmute toggle */}
